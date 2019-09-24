@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const ProjectDetails = (props) => {
     //if you go into the console you can find this id 
