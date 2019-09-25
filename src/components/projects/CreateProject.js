@@ -1,23 +1,23 @@
 
-
-
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { createProject } from '../../store/actions/projectActions'
+import { connect } from 'react-redux';
+import { createProject } from '../../store/actions/projectActions';
 
 class CreateProject extends Component {
     state = {
         title: '',
         content: ''
     }
+
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
-        })
+        });
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state);
+        //this is the line that happens when the user submits the form.. create project was passed in through props via mapdispatchtoprops method below.
+        // the actual project is coming from the state above
         this.props.createProject(this.state);
         this.props.history.push('/');
     }
@@ -42,14 +42,18 @@ class CreateProject extends Component {
         )
     }
 }
-
-const mapDispatchToProps = dispatch => {
+//whatever property we want to add to the props we add to this project
+const mapDispatchToProps = (dispatch) => {
     return {
         createProject: (project) => dispatch(createProject(project))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateProject)
+//mapStateToProps always goes first in the connect function so if you dont have one just put null as so
+export default connect(null, mapDispatchToProps)(CreateProject);
+
+
+
 
 
 
