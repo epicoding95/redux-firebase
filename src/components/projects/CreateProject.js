@@ -1,56 +1,58 @@
 
+
+
 import React, { Component } from 'react'
-import { createProject } from '../../store/actions/projectActions';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { createProject } from '../../store/actions/projectActions'
+
 class CreateProject extends Component {
     state = {
         title: '',
         content: ''
     }
-
-    HandleChange = (e) => {
+    handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
-        });
+        })
     }
-    HandleSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createProject(this.state)
+        // console.log(this.state);
+        this.props.createProject(this.state);
+        this.props.history.push('/');
     }
     render() {
         return (
-            <div className='container'>
-                <form onSubmit={this.handleSubmit} className='white'>
-
-                    <h5 className='grey-text text-darken-3'>create new project</h5>
-                    <div className='input-field'>
-                        <label htmlFor='title'>Title</label>
-                        <input type='text' id='title' onChange={this.HandleChange} />
+            <div className="container">
+                <form className="white" onSubmit={this.handleSubmit}>
+                    <h5 className="grey-text text-darken-3">Create a New Project</h5>
+                    <div className="input-field">
+                        <input type="text" id='title' onChange={this.handleChange} />
+                        <label htmlFor="title">Project Title</label>
                     </div>
-
-                    <div className='input-field'>
-                        <label htmlFor='password'>Project Content</label>
-                        <textarea id='content' className='materialize-textarea'
-                            onChange={this.HandleChange}
-                        />
+                    <div className="input-field">
+                        <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <label htmlFor="content">Project Content</label>
                     </div>
-
-                    <div className='input-field'>
-                        <button className='btn pink lighten-1 z-depth-0'>Create</button>
+                    <div className="input-field">
+                        <button className="btn pink lighten-1">Create</button>
                     </div>
-
                 </form>
-
             </div>
         )
     }
 }
-//whatever property we want to add to the props we add to this project
-const mapDispatchToProps = (dispatch) => {
+
+const mapDispatchToProps = dispatch => {
     return {
         createProject: (project) => dispatch(createProject(project))
     }
 }
 
-//mapStateToProps always goes first in the connect function so if you dont have one just put null as so
-export default connect(null, mapDispatchToProps)(CreateProject);
+export default connect(null, mapDispatchToProps)(CreateProject)
+
+
+
+
+
+

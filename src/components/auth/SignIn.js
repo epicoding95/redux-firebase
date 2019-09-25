@@ -29,7 +29,7 @@ class SignIn extends Component {
                         <label htmlFor='password'>password</label>
                         <input type='password' id='password' onChange={this.HandleChange} />
                     </div>
-                    <div classNme='input-field'>
+                    <div className='input-field'>
                         <button className='btn pink lighten-1 z-depth-0'>Login</button>
                     </div>
                 </form>
