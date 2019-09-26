@@ -2,7 +2,7 @@
 const initState = {
     authError: null
 }
-
+//after this reducer is setup to handle the action creator all you have to do is call the action creator in the component
 const authReducer = (state = initState, action) => {
 
     switch (action.type) {
@@ -17,7 +17,12 @@ const authReducer = (state = initState, action) => {
             return {
                 ...state, authError: null
             }
-        default: return state;
+
+        case 'SIGNOUT-SUCCESS':
+            console.log('SIGNOUT_SUCCESS');
+            return state;
+        default:
+            return state;
     }
 }
 export default authReducer;
